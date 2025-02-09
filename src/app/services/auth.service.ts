@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
+=======
+import { Injectable } from '@angular/core';
+>>>>>>> main
 import { Role } from '../enums/role.enum';
 import { jwtDecode } from 'jwt-decode';
 
@@ -9,6 +13,7 @@ import { jwtDecode } from 'jwt-decode';
   providedIn: 'root',
 })
 export class AuthService {
+<<<<<<< HEAD
   apiUrl = 'http://localhost:3000/api/auth';
   tokenKey = 'auth_token';
   role: Role | null = null;
@@ -81,4 +86,18 @@ export class AuthService {
   private setToken(token: string) {
     localStorage.setItem(this.tokenKey, token);
   }
+=======
+  private role: Role | null = null;
+  getRole(): Role | null {
+    if (!this.role) {
+      const token = (window as any)['mfeWindowToken'] || null;
+      if (token) {
+        const decoded: any = jwtDecode(token);
+        this.role = decoded.role;
+      }
+    }
+
+    return this.role;
+  }
+>>>>>>> main
 }
