@@ -1,6 +1,0 @@
-.angular/
-.vscode/
-node_module/
-dist/
-package-lock.json
-node_modules
